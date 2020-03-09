@@ -4,6 +4,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
+import axios from "axios";
 
 export type Meallist = Meal[];
 
@@ -16,6 +17,23 @@ export type Ingredient = {
   name: string;
   amount: string;
 };
+
+@Component
+export default class HelloWorld extends Vue {
+  @Prop(Array) meals!: Meallist;
+
+  getMeals(): void {
+    axios
+      .get("meals.json")
+      .then(response => {
+        console.log(response.data);
+        this.meals = response.data;
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
