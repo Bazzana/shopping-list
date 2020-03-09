@@ -1,5 +1,9 @@
 <template>
-  <div class="meal-list"></div>
+  <div class="meal-list">
+    <form>
+      <select v-for="meal in meals" :key="meal.name">{{meal.mealName}}</select>
+    </form>
+  </div>
 </template>
 
 <script lang="ts">
@@ -32,6 +36,9 @@ export default class HelloWorld extends Vue {
       .catch(error => {
         console.log(error);
       });
+  }
+  mounted() {
+    this.getMeals();
   }
 }
 </script>
