@@ -1,17 +1,17 @@
 <template>
   <div id="app">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+    <MealSelect />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import HelloWorld from "./components/HelloWorld.vue";
+import MealSelect from "./components/MealSelect.vue";
 
 export default Vue.extend({
   name: "App",
   components: {
-    HelloWorld
+    MealSelect
   }
 });
 </script>
