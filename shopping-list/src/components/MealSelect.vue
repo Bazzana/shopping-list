@@ -1,7 +1,12 @@
 <template>
   <div class="meal-list">
     <form>
-      <select v-for="meal in meals" :key="meal.name">{{meal.mealName}}</select>
+      <div
+        class="meal-list__selector"
+        @click="this.active.push(meal)"
+        v-for="meal in meals"
+        :key="meal"
+      >{{meal.mealName}}</div>
     </form>
   </div>
 </template>
@@ -23,8 +28,9 @@ export type Ingredient = {
 };
 
 @Component
-export default class HelloWorld extends Vue {
+export default class MealSelect extends Vue {
   @Prop(Array) meals!: Meallist;
+  @Prop(Array) active!: Meallist;
 
   getMeals(): void {
     axios
@@ -37,6 +43,12 @@ export default class HelloWorld extends Vue {
         console.log(error);
       });
   }
+
+  setActive(Meal): Meallist {
+    this.active.push(Meal);
+    return this.active;
+  }
+
   mounted() {
     this.getMeals();
   }
@@ -49,5 +61,17 @@ export default class HelloWorld extends Vue {
   width: 50%;
   height: 100%;
   display: inline-block;
+
+  &__selector {
+    text-align: left;
+    font-weight: bold;
+    background: #fafafa;
+    height: 55px;
+    line-height: 55px;
+    padding-left: 20px;
+    border: 2px solid #dedede;
+    margin: 10px 0;
+    max-width: 350px;
+  }
 }
 </style>
