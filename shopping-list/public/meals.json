@@ -1,0 +1,17 @@
+[
+  {
+    "mealName": "toast",
+    "ingredients": [
+      { "name": "bread", "amount": "2 slices" },
+      { "name": "butter", "amount": "10 grams" }
+    ]
+  },
+  {
+    "mealName": "omelette",
+    "ingredients": [
+      { "name": "eggs", "amount": "4" },
+      { "name": "milk", "amount": "1 tbs" },
+      { "name": "cheese", "amount": "1/4 cup" }
+    ]
+  }
+]
