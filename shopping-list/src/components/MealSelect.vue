@@ -3,11 +3,12 @@
     <form>
       <div
         class="meal-list__selector"
-        @click="this.active.push(meal)"
+        @click="setActive(meal)"
         v-for="meal in meals"
-        :key="meal"
+        :key="meal.name"
       >{{meal.mealName}}</div>
     </form>
+    {{active}}
   </div>
 </template>
 
@@ -29,8 +30,8 @@ export type Ingredient = {
 
 @Component
 export default class MealSelect extends Vue {
-  @Prop(Array) meals!: Meallist;
-  @Prop(Array) active!: Meallist;
+  meals: Meallist = [];
+  active: Meallist = [];
 
   getMeals(): void {
     axios
@@ -44,13 +45,16 @@ export default class MealSelect extends Vue {
       });
   }
 
-  setActive(Meal): Meallist {
-    this.active.push(Meal);
-    return this.active;
+  setActive(meal: Meal) {
+    this.active.push(meal);
+    const activeUnique = [...new Set(this.active)];
+    console.log(this.active);
+    console.log(activeUnique);
   }
 
   mounted() {
     this.getMeals();
+    this.active;
   }
 }
 </script>
